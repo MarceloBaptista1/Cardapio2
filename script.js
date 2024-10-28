@@ -45,7 +45,10 @@ menu.addEventListener("click", function(event){
     }
 })
 
-
+// Exemplo de função quando o usurio clicar em um botão - Somente para analise, pode apagar depois
+function alerta(){
+    $("#cart-modal").css('display', 'flex')
+}
 //Função Para ADD no carrinho
 
 
