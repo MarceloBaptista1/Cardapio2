@@ -51,7 +51,6 @@ function alerta_novo_lanche(nome_lanche) {
         stopOnFocus: true,
         style: {
             borderRadius: "15px",
-
             background: "DarkOrange",
             color: "#000000",
         },
