@@ -47,20 +47,18 @@ menu.addEventListener("click", function(event){
 
 // Exemplo de função quando o usurio clicar em um botão - Somente para analise, pode apagar depois
 function alerta_novo_lanche(nome_lanche){
-    //$("#cart-modal").css('display', 'flex')
-    //alert('Bateu aqui')
-        Toastify({
-            text: nome_lanche + " Adicionado ao carrinho",
-            duration: 3000,
-            close: true,
-            gravity: "bottom",
-            position: "right",
-            stopOnFocus: true,
-            style: {
-              background: "lightgray",
-              color: "#000000"
-            },
-       }).showToast();
+    Toastify({
+        text: nome_lanche + " Adicionado ao carrinho",
+        duration: 3000,
+        close: true,
+        gravity: "bottom",
+        position: "right",
+        stopOnFocus: true,
+        style: {
+            background: "lightgray",
+            color: "#000000"
+        },
+    }).showToast();
 }
 
 
