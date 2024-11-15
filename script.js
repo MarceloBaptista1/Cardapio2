@@ -46,7 +46,7 @@ menu.addEventListener("click", function(event){
 })
 
 // Exemplo de função quando o usurio clicar em um botão - Somente para analise, pode apagar depois
-function alerta(){
+function alerta_novo_lanche(nome_lanche){
     $("#cart-modal").css('display', 'flex')
 }
 
