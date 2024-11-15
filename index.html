@@ -62,7 +62,7 @@
                 class="grid grid-cols-1 md:grid-cols-2 gap-7 md:gap-10 mx-auto max-w-7xl px-2 mb-16"
             >
                 <!--PRODUTO ITEM-->
-                <div class="flex gap-2">
+                <div id="lanche1" class="flex gap-2">
                     <img
                         src="./assets/hamb-1.png"
                         alt="Smash Burguer"
@@ -98,7 +98,7 @@
                 <!--PRODUTO FIM ITEM-->
 
                 <!--PRODUTO ITEM-->
-                <div class="flex gap-2">
+                <div id="lanche2" class="flex gap-2">
                     <img
                         src="./assets/hamb-2.png"
                         alt="Duplo Smash Burguer"
@@ -134,7 +134,7 @@
                 <!--PRODUTO FIM ITEM-->
 
                 <!--PRODUTO ITEM-->
-                <div class="flex gap-2">
+                <div id="lanche3" class="flex gap-2">
                     <img
                         src="./assets/hamb-3.png"
                         alt="Smash Cheader Burguer"
@@ -170,7 +170,7 @@
                 <!--PRODUTO FIM ITEM-->
 
                 <!--PRODUTO ITEM-->
-                <div class="flex gap-2">
+                <div id="lanche4" class="flex gap-2">
                     <img
                         src="./assets/hamb-4.png"
                         alt="Chiken Burguer"
@@ -206,7 +206,7 @@
                 <!--PRODUTO FIM ITEM-->
 
                 <!--PRODUTO ITEM-->
-                <div class="flex gap-2">
+                <div id="lanche5" class="flex gap-2">
                     <img
                         src="./assets/hamb-7.png"
                         alt="Burguer Cowboy"
@@ -242,7 +242,7 @@
                 <!--PRODUTO FIM ITEM-->
 
                 <!--PRODUTO ITEM-->
-                <div class="flex gap-2">
+                <div id="lanche6" class="flex gap-2">
                     <img
                         src="./assets/hamb-8.png"
                         alt="Salada Burguer"
@@ -285,7 +285,7 @@
             <!--GRID BEBIDAS -->
 
             <div
-                class="flex grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-7 md:gap-10 mx-auto max-w-7xl px-2 mb-16"
+                class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-7 md:gap-10 mx-auto max-w-7xl px-2 mb-16"
                 id="menu"
             >
                 <!--BEBIDA 1 -->
@@ -348,6 +348,7 @@
 
                 <!--FIM BEBIDA 2-->
             </div>
+            
 
             <!--FIM GRID BEBIDAS-->
         </div>
@@ -398,100 +399,6 @@
         </div>
 
         <!-- FIM MODAL CART -->
-
-        <!-- MODAL LANCHES TEST -->
-
-        <div
-            class="bg-black/70 w-full h-full fixed top-0 left-0 z-[99] items-center justify-center flex"
-            id="snack-modal"
-        >
-            <div class="bg-white p-5 rounded-md min-w-[90%] md:min-w-[600px]">
-                <h2 class="font-bold text-center text-2xl mb-2">
-                    Informações do Lanche
-                </h2>
-
-                <div id="cart-items" class="flex justify-between flex-col mb-2">
-                    <p class="font-bold">
-                        Lanche: <span id="cart-items"> # </span>
-                    </p>
-                    <p class="font-bold">
-                        Preço: <span id="cart-items"> # </span>
-                    </p>
-                </div>
-
-                <div>
-                    <form action="#" method="get" autocomplete="off">
-                        <p class="font-bold">Adicionais</p>
-                        <input
-                            type="checkbox"
-                            id="add-items"
-                            name="add-items"
-                            value="sim"
-                        />
-                        <p class="inline font-sans">Cheader</p>
-                    </form>
-                </div>
-
-                <div>
-                    <form action="#" method="get" autocomplete="off">
-                        <input
-                            type="checkbox"
-                            id="add-items"
-                            name="add-items"
-                            value="sim"
-                        />
-                        <p class="inline font-sans">Queijo Mussarela</p>
-                    </form>
-                </div>
-
-                <div>
-                    <form action="#" method="get" autocomplete="off">
-                        <input
-                            type="checkbox"
-                            id="add-items"
-                            name="add-items"
-                            value="sim"
-                        />
-                        <p class="inline font-sans">Tomate</p>
-                    </form>
-                </div>
-
-                <div>
-                    <form action="#" method="get" autocomplete="off">
-                        <input
-                            type="checkbox"
-                            id="add-items"
-                            name="add-items"
-                            value="sim"
-                        />
-                        <p class="inline font-sans">Bacon</p>
-                    </form>
-                </div>
-
-                <label for="observations" class="font-bold">Observações:</label>
-                <textarea
-                    id="observations"
-                    placeholder="Digite suas observações..."
-                    class="w-full border-2 p-1 rounded my-1"
-                ></textarea>
-
-                <div id="additional-items" class="mt-2"></div>
-
-                <div class="flex items-center justify-between mt-5 w-full">
-                    <button class="font-bold" id="close-snack-modal-btn">
-                        Fechar
-                    </button>
-                    <button
-                        id="add-to-cart-btn"
-                        class="bg-green-600 text-white px-4 py-1 rounded"
-                    >
-                        Adicionar ao Carrinho
-                    </button>
-                </div>
-            </div>
-        </div>
-
-        <!-- FIM MODAL LANCHES -->
 
         <!-- BOTÃO CART FOOTER -->
 
