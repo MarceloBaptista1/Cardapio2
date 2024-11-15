@@ -49,6 +49,8 @@ menu.addEventListener("click", function(event){
 function alerta(){
     $("#cart-modal").css('display', 'flex')
 }
+
+
 //Função Para ADD no carrinho
 
 
