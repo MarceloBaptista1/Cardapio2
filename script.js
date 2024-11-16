@@ -97,7 +97,7 @@ function updateCartModal() {
                     <p class="font-medium mt-2">R$ ${item.price.toFixed(2)}</p>
                 </div>
 
-                <div class="flex items-center gap-2">
+                <div class="flex items-center gap-5">
 
 
                 <style>
@@ -108,8 +108,9 @@ input[type=number]::-webkit-inner-spin-button {
 input[type=number] { 
    -moz-appearance: textfield;
    appearance: textfield;
-
-   width: 90px;
+    margin-right: 10px;
+    margin-left: 10px;
+   width: 60px;
     padding: 5px;
     border: 1px solid #ccc;
     border-radius: 4px;
@@ -118,7 +119,7 @@ input[type=number] {
 </style>
 
 
-                    <button type="button" class="fa-solid fa-minus btn-minus text-gray-700 p-2 bg-gray-200 rounded hover:bg-gray-300" onclick="decreaseQuantity(${index})"></button>
+                    <button type="button" class="fa-solid fa-minus btn-minus" onclick="decreaseQuantity(${index})"></button>
                     <input 
                         type="number" 
                         id="quantityProductsCart-${index}" 
@@ -129,8 +130,7 @@ input[type=number] {
                         class="form-control text-center"
                         onchange="updateQuantity(${index})"
                     >
-                    <button type="button" class="fa-solid fa-plus btn-plus" onclick="increaseQuantity(${index})"></button>
-                    
+                    <button type="button" class="fa-solid fa-plus btn-plus" onclick="increaseQuantity(${index})"></button> 
                 </div>
             </div>
         `;
