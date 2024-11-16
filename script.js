@@ -41,7 +41,7 @@ menu.addEventListener("click", function (event) {
 });
 
 // Exemplo de função quando o usurio clicar em um botão - Somente para analise, pode apagar depois
-function alerta_novo_produto(nome_lanche) {
+function alertaNovoProduto(nome_lanche) {
     Toastify({
         text: nome_lanche + " Adicionado ao carrinho",
         duration: 3000,
@@ -95,12 +95,44 @@ function updateCartModal() {
             <p>Quantidade: ${item.quantity}</p>
             <p class="font-medium mt-2">R$ ${item.price.toFixed(2)}</p>
             </div>
-            
-            <button class="remove-from-cart-btn" data-name= "${item.name}">
-            Remover
-            </button>
-            
-            </div>
+
+            <div class="flex items-center gap-2">
+  <button type="button" class=" fa-solid fa-minus btn-minus text-gray-700 p-2 bg-gray-200 rounded hover:bg-gray-300">
+    
+  </button>
+  <style>
+input[type=number]::-webkit-inner-spin-button { 
+    -webkit-appearance: none;
+
+}
+input[type=number] { 
+   -moz-appearance: textfield;
+   appearance: textfield;
+
+
+   width: 60px;
+    padding: 5px;
+    border: 2px solid #ccc;
+    border-radius: 4px;
+    
+
+
+}
+</style>
+  <input 
+    type="number" 
+    id="quantityProductsCart" 
+    name="quantityProductsCart" 
+    min="1" 
+    value="1"
+    class="form-control text-center"
+    >
+  
+  <button type="button" class=" fa-solid fa-plus btn-plus text-gray-700 p-2 bg-gray-200 rounded hover:bg-gray-300">
+    
+  </button>
+</div>
+
             
         `;
 
@@ -166,6 +198,7 @@ checkoutBtn.addEventListener("click", function () {
             position: "right", // `left`, `center` or `right`
             stopOnFocus: true, // Prevents dismissing of toast on hover
             style: {
+                borderRadius: "15px",
                 background: "#ef4444",
             },
         }).showToast();
