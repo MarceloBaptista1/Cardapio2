@@ -112,7 +112,7 @@ input[type=number] {
 
    width: 60px;
     padding: 5px;
-    border: 2px solid #ccc;
+    border: 1px solid #ccc;
     border-radius: 4px;
     
 
