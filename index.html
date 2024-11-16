@@ -124,10 +124,34 @@
                         padding-right: 30px;
                     "
                 ></div>
-
-                <p class="font-bold" style="border-top: 0.01rem solid darkorange">
+                <hr style="border-top: 0.01rem solid darkorange">
+                <p
+                    class="font-bold"
+                >
                     Total: <span id="cart-total">0.00</span>
                 </p>
+
+                <div class="mt-4">
+                    <form>
+                        <label class="font-bold" for="payment"
+                            >Selecione a forma de pagamento:
+                        </label>
+                        <select
+                            name="payment"
+                            id="payment"
+                            style="
+                                border: 2px solid lightgray;
+                                border-radius: 4px;
+                                padding: 5px;
+                            "
+                        >
+                            <option value="Cartao">Cartão De Crédito</option>
+                            <option value="Cartao">Cartão De Débito</option>
+                            <option value="Pix">Pix</option>
+                            <option value="Dinheiro">Dinheiro</option>
+                        </select>
+                    </form>
+                </div>
 
                 <p class="font-bold mt-4">Endereço Para Entrega:</p>
                 <input
