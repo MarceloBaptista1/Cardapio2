@@ -89,52 +89,83 @@ function updateCartModal() {
             "justify-between"
         );
         cartItemElement.innerHTML = `
+            <style>
+                input[type=number]::-webkit-inner-spin-button { 
+                    -webkit-appearance: none;
+
+                }
+                input[type=number] { 
+                -moz-appearance: textfield;
+                appearance: textfield;
+
+
+                width: 60px;
+                    padding: 5px;
+                    border: 2px solid #ccc;
+                    border-radius: 4px;
+                    
+
+
+                }
+            </style>
             <div class="flex items-center justify-between"> 
-            <div>
-            <p class="font-bold">${item.name}</p>
-            <p>Quantidade: ${item.quantity}</p>
-            <p class="font-medium mt-2">R$ ${item.price.toFixed(2)}</p>
+                <div>
+                    <p class="font-bold">${item.name}</p>
+                    <p>Quantidade: <span id="quantityProductsCartUpdated">${item.quantity}</span></p>
+                    <p class="font-medium mt-2">R$ ${item.price.toFixed(2)}</p>
+                </div>
+
+                <div class="flex items-center gap-2">
+                    <button type="button" id="decreaseQuantityProductsCart" class="fa-solid fa-minus btn-minus text-gray-700 p-2 bg-gray-200 rounded hover:bg-gray-300"></button>
+                    <input 
+                        type="number" 
+                        id="quantityProductsCart" 
+                        name="quantityProductsCart" 
+                        min="1" 
+                        value="${item.quantity}"
+                        class="form-control text-center"
+                        >
+                    <button type="button" id="increaseQuantityProductsCart" class=" fa-solid fa-plus btn-plus text-gray-700 p-2 bg-gray-200 rounded hover:bg-gray-300"></button>
+                </div>
             </div>
-
-            <div class="flex items-center gap-2">
-  <button type="button" class=" fa-solid fa-minus btn-minus text-gray-700 p-2 bg-gray-200 rounded hover:bg-gray-300">
-    
-  </button>
-  <style>
-input[type=number]::-webkit-inner-spin-button { 
-    -webkit-appearance: none;
-
-}
-input[type=number] { 
-   -moz-appearance: textfield;
-   appearance: textfield;
-
-
-   width: 60px;
-    padding: 5px;
-    border: 2px solid #ccc;
-    border-radius: 4px;
-    
-
-
-}
-</style>
-  <input 
-    type="number" 
-    id="quantityProductsCart" 
-    name="quantityProductsCart" 
-    min="1" 
-    value="1"
-    class="form-control text-center"
-    >
-  
-  <button type="button" class=" fa-solid fa-plus btn-plus text-gray-700 p-2 bg-gray-200 rounded hover:bg-gray-300">
-    
-  </button>
-</div>
-
-            
         `;
+
+        $(document).ready(function () {
+            // Diminuir Quantidade
+            $(document).on('click', '#decreaseQuantityProductsCart', function () {
+                const input = $(this).siblings('input#quantityProductsCart');
+                let currentValue = parseInt(input.val(), 10) || 1; // Garante que o valor seja válido
+    
+                if (currentValue > 1) {
+                    const newValue = currentValue - 1;
+                    input.val(newValue); // Decrementa o valor
+                    $('#quantityProductsCartUpdated').text(newValue); // Atualiza o texto com o novo valor
+                    input.trigger('change'); // Aciona o evento change manualmente, se necessário
+                }
+            });
+    
+            // Aumentar Quantidade
+            $(document).on('click', '#increaseQuantityProductsCart', function () {
+                const input = $(this).siblings('input#quantityProductsCart');
+                let currentValue = parseInt(input.val(), 10) || 1; // Garante que o valor seja válido
+    
+                const newValue = currentValue + 1;
+                input.val(newValue); // Incrementa o valor
+                $('#quantityProductsCartUpdated').text(newValue); // Atualiza o texto com o novo valor
+                input.trigger('change'); // Aciona o evento change manualmente, se necessário
+            });
+    
+            // Evento para prevenir valores inválidos no input
+            $(document).on('change', '#quantityProductsCart', function () {
+                let value = parseInt($(this).val(), 10);
+                if (isNaN(value) || value < 1) {
+                    $(this).val(1); // Reseta para 1 se o valor for inválido
+                    $('#quantityProductsCartUpdated').text(1); // Atualiza o texto com o valor padrão
+                } else {
+                    $('#quantityProductsCartUpdated').text(value); // Atualiza o texto com o valor válido
+                }
+            });
+        });
 
         total += item.price * item.quantity;
 
