@@ -1,20 +1,20 @@
 <?php
+    
+    try {
+        $servidor       = "mysql";
+        $usuario        = "pizzaiolo"; 
+        $senha          = "str0mP@ss";
+        $nome_banco     = "pizzaiolo";
 
-    $servidor       = "localhost";
-    $usuario        = "garage_itech_mysql"; 
-    $senha          = "str0mP@ss";
-    $nome_banco     = "garage_itech_mysql";
+        $conn = mysqli_connect($servidor, $usuario, $senha, $nome_banco);
+        if (!$conn) {
+            throw new Exception("Falha na conexão: " . mysqli_connect_error());
+        }
 
-    // Criando a conexão
-    $conn = mysqli_connect($servidor, $usuario, $senha, $nome_banco);
-
-    // Verificando a conexão
-    if (!$conn) {
-        die("Falha na conexão: " . mysqli_connect_error());
+        mysqli_close($conn);
+        
+    } catch (Exception $e) {
+        echo 'Erro :: ' . $e->getMessage(), "\n";
     }
-    echo "Conexão bem-sucedida!";
-
-    // Fechando a conexão
-    mysqli_close($conn);
 
 ?>

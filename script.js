@@ -41,7 +41,7 @@ menu.addEventListener("click", function (event) {
 });
 
 // Exemplo de função quando o usurio clicar em um botão - Somente para analise, pode apagar depois
-function alerta_novo_lanche(nome_lanche) {
+function alerta_novo_produto(nome_lanche) {
     Toastify({
         text: nome_lanche + " Adicionado ao carrinho",
         duration: 3000,
