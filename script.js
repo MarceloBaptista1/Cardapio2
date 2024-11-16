@@ -40,6 +40,7 @@ menu.addEventListener("click", function (event) {
 });
 
 function alertaNovoProduto(nome_lanche) {
+    const isMobile = window.innerWidth <= 768;
     Toastify({
         text: nome_lanche + " Adicionado ao carrinho",
         duration: 3000,
@@ -48,7 +49,9 @@ function alertaNovoProduto(nome_lanche) {
         position: "right",
         stopOnFocus: true,
         style: {
-            borderRadius: "15px",
+            fontSize: isMobile ? "14px" : "16px", // Fonte menor no mobile.
+            padding: isMobile ? "10px" : "15px", // Padding ajustado.
+            borderRadius: "12px",
             background: "DarkOrange",
             color: "#000000",
         },
@@ -212,6 +215,7 @@ addressInput.addEventListener("input", function (event) {
 
 // Finalizar pedido
 checkoutBtn.addEventListener("click", function () {
+    const isMobile = window.innerWidth <= 768;
     const isOpen = checkOpenRestaurant();
     if (!isOpen) {
         Toastify({
@@ -222,6 +226,8 @@ checkoutBtn.addEventListener("click", function () {
             position: "right",
             stopOnFocus: true,
             style: {
+                fontSize: isMobile ? "14px" : "16px", // Fonte menor no mobile.
+                padding: isMobile ? "10px" : "15px", // Padding ajustado.
                 borderRadius: "15px",
                 background: "#ef4444",
             },
