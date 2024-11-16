@@ -88,37 +88,31 @@ function updateCartModal() {
             "justify-between"
         );
         cartItemElement.innerHTML = `
-            <div class="flex items-center justify-between"> 
+            <style>
+                input[type=number]::-webkit-inner-spin-button { 
+                    -webkit-appearance: none;
+
+                }
+                input[type=number] { 
+                -moz-appearance: textfield;
+                appearance: textfield;
+                    margin-right: 10px;
+                    margin-left: 10px;
+                width: 60px;
+                    padding: 5px;
+                    border: 1px solid #ccc;
+                    border-radius: 4px;
+
+                }
+            </style>
+            <div class="flex items-center justify-between mb-8"> 
                 <div>
-                    <p class="font-bold">${item.name}</p>
-                    <p>Quantidade: <span id="quantityProductsCartUpdated-${index}">${
-            item.quantity
-        }</span></p>
-                    <p class="font-medium mt-2">R$ ${item.price.toFixed(2)}</p>
+                    <p class="font-bold mb-1">${item.name}</p>
+                    <p>Quantidade: <span id="quantityProductsCartUpdated-${index}">${item.quantity}</span></p>
+                    <p class="font-medium">R$ ${item.price.toFixed(2)}</p>
                 </div>
 
                 <div class="flex items-center gap-5">
-
-
-                <style>
-input[type=number]::-webkit-inner-spin-button { 
-    -webkit-appearance: none;
-
-}
-input[type=number] { 
-   -moz-appearance: textfield;
-   appearance: textfield;
-    margin-right: 10px;
-    margin-left: 10px;
-   width: 60px;
-    padding: 5px;
-    border: 1px solid #ccc;
-    border-radius: 4px;
-
-}
-</style>
-
-
                     <button type="button" class="fa-solid fa-minus btn-minus" onclick="decreaseQuantity(${index})"></button>
                     <input 
                         type="number" 
