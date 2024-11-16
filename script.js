@@ -11,14 +11,13 @@ const addressWarn = document.getElementById("address-warn");
 
 let cart = [];
 
-//Abri o Modal Do carrinho
+// Abri o Modal Do carrinho
 cartBtn.addEventListener("click", function () {
     updateCartModal();
     cartModal.style.display = "flex";
 });
 
-//Fechar o modal quando clicar fora
-
+// Fechar o modal quando clicar fora
 cartModal.addEventListener("click", function (event) {
     if (event.target === cartModal) {
         cartModal.style.display = "none";
@@ -40,7 +39,6 @@ menu.addEventListener("click", function (event) {
     }
 });
 
-// Exemplo de função quando o usurio clicar em um botão - Somente para analise, pode apagar depois
 function alertaNovoProduto(nome_lanche) {
     Toastify({
         text: nome_lanche + " Adicionado ao carrinho",
@@ -57,8 +55,7 @@ function alertaNovoProduto(nome_lanche) {
     }).showToast();
 }
 
-//Função Para ADD no carrinho
-
+// Função para ADD no carrinho
 function addToCart(name, price) {
     const existingItem = cart.find((item) => item.name === name);
 
@@ -75,12 +72,11 @@ function addToCart(name, price) {
 }
 
 // Atualizar Carrinho
-
 function updateCartModal() {
     cartItemsContainer.innerHTML = "";
     let total = 0;
 
-    cart.forEach((item) => {
+    cart.forEach((item, index) => {
         const cartItemElement = document.createElement("div");
         cartItemElement.classList.add(
             "flex",
@@ -89,83 +85,52 @@ function updateCartModal() {
             "justify-between"
         );
         cartItemElement.innerHTML = `
-            <style>
-                input[type=number]::-webkit-inner-spin-button { 
-                    -webkit-appearance: none;
-
-                }
-                input[type=number] { 
-                -moz-appearance: textfield;
-                appearance: textfield;
-
-
-   width: 60px;
-    padding: 5px;
-    border: 1px solid #ccc;
-    border-radius: 4px;
-    
-
-
-                }
-            </style>
             <div class="flex items-center justify-between"> 
                 <div>
                     <p class="font-bold">${item.name}</p>
-                    <p>Quantidade: <span id="quantityProductsCartUpdated">${item.quantity}</span></p>
+                    <p>Quantidade: <span id="quantityProductsCartUpdated-${index}">${
+            item.quantity
+        }</span></p>
                     <p class="font-medium mt-2">R$ ${item.price.toFixed(2)}</p>
                 </div>
 
                 <div class="flex items-center gap-2">
-                    <button type="button" id="decreaseQuantityProductsCart" class="fa-solid fa-minus btn-minus text-gray-700 p-2 bg-gray-200 rounded hover:bg-gray-300"></button>
+
+
+                <style>
+input[type=number]::-webkit-inner-spin-button { 
+    -webkit-appearance: none;
+
+}
+input[type=number] { 
+   -moz-appearance: textfield;
+   appearance: textfield;
+
+   width: 90px;
+    padding: 5px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+
+}
+</style>
+
+
+                    <button type="button" class="fa-solid fa-minus btn-minus text-gray-700 p-2 bg-gray-200 rounded hover:bg-gray-300" onclick="decreaseQuantity(${index})"></button>
                     <input 
                         type="number" 
-                        id="quantityProductsCart" 
+                        id="quantityProductsCart-${index}" 
                         name="quantityProductsCart" 
                         min="1" 
+                        max="99"
                         value="${item.quantity}"
                         class="form-control text-center"
-                        >
-                    <button type="button" id="increaseQuantityProductsCart" class=" fa-solid fa-plus btn-plus text-gray-700 p-2 bg-gray-200 rounded hover:bg-gray-300"></button>
+                        onchange="updateQuantity(${index})"
+                    >
+                    <button type="button" class="fa-solid fa-plus btn-plus" onclick="increaseQuantity(${index})"></button>
+                    
                 </div>
             </div>
         `;
-
-        $(document).ready(function () {
-            // Diminuir Quantidade
-            $(document).on('click', '#decreaseQuantityProductsCart', function () {
-                const input = $(this).siblings('input#quantityProductsCart');
-                let currentValue = parseInt(input.val(), 10) || 1; // Garante que o valor seja válido
-    
-                if (currentValue > 1) {
-                    const newValue = currentValue - 1;
-                    input.val(newValue); // Decrementa o valor
-                    $('#quantityProductsCartUpdated').text(newValue); // Atualiza o texto com o novo valor
-                    input.trigger('change'); // Aciona o evento change manualmente, se necessário
-                }
-            });
-    
-            // Aumentar Quantidade
-            $(document).on('click', '#increaseQuantityProductsCart', function () {
-                const input = $(this).siblings('input#quantityProductsCart');
-                let currentValue = parseInt(input.val(), 10) || 1; // Garante que o valor seja válido
-    
-                const newValue = currentValue + 1;
-                input.val(newValue); // Incrementa o valor
-                $('#quantityProductsCartUpdated').text(newValue); // Atualiza o texto com o novo valor
-                input.trigger('change'); // Aciona o evento change manualmente, se necessário
-            });
-    
-            // Evento para prevenir valores inválidos no input
-            $(document).on('change', '#quantityProductsCart', function () {
-                let value = parseInt($(this).val(), 10);
-                if (isNaN(value) || value < 1) {
-                    $(this).val(1); // Reseta para 1 se o valor for inválido
-                    $('#quantityProductsCartUpdated').text(1); // Atualiza o texto com o valor padrão
-                } else {
-                    $('#quantityProductsCartUpdated').text(value); // Atualiza o texto com o valor válido
-                }
-            });
-        });
 
         total += item.price * item.quantity;
 
@@ -177,11 +142,41 @@ function updateCartModal() {
         currency: "BRL",
     });
 
-    cartCounter.innerText = cart.length;
+    cartCounter.innerText = cart.reduce((acc, item) => acc + item.quantity, 0);
 }
 
-//func para remover item cart
+// Função para diminuir a quantidade
+function decreaseQuantity(index) {
+    if (cart[index].quantity > 1) {
+        cart[index].quantity -= 1;
+        updateCartModal();
+    }
+}
 
+// Função para aumentar a quantidade
+function increaseQuantity(index) {
+    cart[index].quantity += 1;
+    updateCartModal();
+}
+
+// Função para atualizar a quantidade diretamente do input
+function updateQuantity(index) {
+    const quantityInput = document.getElementById(
+        `quantityProductsCart-${index}`
+    );
+    const newQuantity = parseInt(quantityInput.value, 10);
+
+    if (newQuantity >= 1) {
+        cart[index].quantity = newQuantity;
+        updateCartModal();
+    } else {
+        quantityInput.value = 1;
+        cart[index].quantity = 1;
+        updateCartModal();
+    }
+}
+
+// Função para remover item do carrinho
 cartItemsContainer.addEventListener("click", function (event) {
     if (event.target.classList.contains("remove-from-cart-btn")) {
         const name = event.target.getAttribute("data-name");
@@ -206,8 +201,6 @@ function removeItemCart(name) {
     }
 }
 
-//fim func para remover item cart
-
 addressInput.addEventListener("input", function (event) {
     let inputValue = event.target.value;
 
@@ -217,23 +210,22 @@ addressInput.addEventListener("input", function (event) {
     }
 });
 
-//Finalizar pedido
+// Finalizar pedido
 checkoutBtn.addEventListener("click", function () {
     const isOpen = checkOpenRestaurant();
     if (!isOpen) {
         Toastify({
-            text: "Ops Restaruante Fechado No Momento! ",
+            text: "Ops, restaurante fechado no momento!",
             duration: 3000,
             close: true,
-            gravity: "top", // `top` or `bottom`
-            position: "right", // `left`, `center` or `right`
-            stopOnFocus: true, // Prevents dismissing of toast on hover
+            gravity: "top",
+            position: "right",
+            stopOnFocus: true,
             style: {
                 borderRadius: "15px",
                 background: "#ef4444",
             },
         }).showToast();
-
         return;
     }
 
@@ -249,7 +241,7 @@ checkoutBtn.addEventListener("click", function () {
         .map((item) => {
             return ` ${item.name} Quantidade: (${item.quantity}) Preço: R$${item.price} |`;
         })
-        .join("");
+        .join(" ");
 
     const message = encodeURIComponent(cartItems);
     const phone = "16992971084";
@@ -263,7 +255,7 @@ checkoutBtn.addEventListener("click", function () {
     updateCartModal();
 });
 
-// verificar se está open
+// Verificar se está aberto
 function checkOpenRestaurant() {
     const data = new Date();
     const hora = data.getHours();
