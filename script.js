@@ -102,16 +102,26 @@ function updateCartModal() {
                     padding: 5px;
                     border: 1px solid #ccc;
                     border-radius: 4px;
-
                 }
+                .btn-edit {
+                font-size: 10px
+                padding: 2px 6px;
+                background-color: transparent; 
+                color: green; 
+                cursor: pointer; 
+                transition: all 0.3s ease;
+            }
             </style>
             <div class="flex items-center justify-between mb-8"> 
                 <div>
-                    <p class="font-bold mb-1">${item.name}</p>
-                    <p>Quantidade: <span id="quantityProductsCartUpdated-${index}">${item.quantity}</span></p>
+                    <p class="font-bold mb-1">${item.name}
+                    <button type="button" class="btn-edit ml-2" onclick="editItem(${index})">Editar</button>      
+                    </p>
+                    <p>Quantidade: <span id="quantityProductsCartUpdated-${index}">${
+            item.quantity
+        }</span></p>
                     <p class="font-medium">R$ ${item.price.toFixed(2)}</p>
                 </div>
-
                 <div class="flex items-center gap-5">
                     <button type="button" class="fa-solid fa-minus btn-minus" onclick="decreaseQuantity(${index})"></button>
                     <input 
