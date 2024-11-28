@@ -152,6 +152,25 @@ function updateCartModal() {
     cartCounter.innerText = cart.reduce((acc, item) => acc + item.quantity, 0);
 }
 
+//Função quando apertar no Editar dentro do Modal
+
+function editItem(index) {
+    const item = cart[index];
+
+    document.getElementsById(
+        "modalItemName"
+    ).textContent = `Lanche: ${item.name}`;
+    document.getElementById("modalQuantity").value = item.quantity;
+
+    document.getElementById("editModal");
+    modal.classList.remove("hidden");
+    modal.classList.add("flex");
+}
+
+function closeModal() {
+    document.getElementById("editModal").classList.add("hidden");
+}
+
 // Função para diminuir a quantidade
 function decreaseQuantity(index) {
     if (cart[index].quantity > 1) {

@@ -157,10 +157,7 @@
                 <div
                     id="cart-items"
                     class="flex justify-between mb-2 flex-col"
-                    style="
-                        max-height: 400px;
-                        overflow: auto;
-                    "
+                    style="max-height: 400px; overflow: auto"
                 ></div>
                 <hr style="border-top: 0.01rem solid darkorange" />
                 <p class="font-bold" style="margin-top: 15px">
@@ -176,10 +173,7 @@
                             name="payment"
                             id="payment"
                             class="bg-white border border-gray-300 text-black text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
-                            style="
-                                border-radius: 0.25rem;
-                                padding: 10px;
-                            "
+                            style="border-radius: 0.25rem; padding: 10px"
                         >
                             <option value="Cartao">Cartão De Crédito</option>
                             <option value="Cartao">Cartão De Débito</option>
@@ -213,6 +207,38 @@
         </div>
 
         <!-- FIM MODAL CART -->
+
+        <!-- NEW MODAL EDIT PRODUCTS-->
+        <div
+            class="bg-black/70 w-full h-full fixed top-0 left-0 z-[99] items-center justify-center hidden"
+            id="editModal"
+        >
+            <div class="bg-white p-5 rounded-md min-w-[90%] md:min-w-[600px]">
+                <h2 class="text-2xl text-center font-bold mb-3">
+                    Editar Lanche
+                </h2>
+                <p id="modalItemName" class="mb-2"></p>
+                <label for="modalItemQuantity">Quantidade:</label>
+                <input
+                    type="number"
+                    id="modalItemQuantity"
+                    min="1"
+                    max="99"
+                    class="border border-gray-300 p-2 rounded"
+                />
+
+                <div class="mt-4 flex justify-between gap-2">
+                    <button type="button" onclick="closeModal()">
+                        Cancelar
+                    </button>
+                    <button type="button" onclick="saveChanges()">
+                        Salvar
+                    </button>
+                </div>
+            </div>
+        </div>
+
+        <!-- FINISH MODAL EDIT PRODUCTS-->
 
         <!-- BOTÃO CART FOOTER -->
 
