@@ -173,6 +173,7 @@
                         <select
                             name="payment"
                             id="payment"
+                            required
                             class="bg-white border border-gray-300 text-black text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
                             style="border-radius: 0.25rem; padding: 10px"
                         >
@@ -233,7 +234,11 @@
                     <button type="button" onclick="closeModal()">
                         Cancelar
                     </button>
-                    <button type="button" onclick="saveChanges()">
+                    <button
+                        class="bg-green-600 text-white px-4 py-1 rounded"
+                        type="button"
+                        onclick="saveChanges()"
+                    >
                         Salvar
                     </button>
                 </div>

@@ -33,9 +33,9 @@ menu.addEventListener("click", function (event) {
     let parentButton = event.target.closest(".add-to-cart-btn");
 
     if (parentButton) {
-        const name  = parentButton.getAttribute("data-name");
+        const name = parentButton.getAttribute("data-name");
         const price = parseFloat(parentButton.getAttribute("data-price"));
-        const id    = parseInt(parentButton.getAttribute("data-id"))
+        const id = parseInt(parentButton.getAttribute("data-id"));
 
         addToCart(name, price, id);
     }
@@ -83,7 +83,7 @@ function updateCartModal() {
     let total = 0;
 
     cart.forEach((item, index) => {
-        console.log(item)
+        console.log(item);
         const cartItemElement = document.createElement("div");
         cartItemElement.classList.add(
             "flex",
@@ -121,7 +121,9 @@ function updateCartModal() {
                     <p class="font-bold mb-1">${item.name}
                         <button type="button" class="btn-edit ml-2" onclick="editItem(${index})">Editar</button>      
                     </p>
-                    <p>Quantidade: <span id="quantityProductsCartUpdated-${index}">${item.quantity}</span></p>
+                    <p>Quantidade: <span id="quantityProductsCartUpdated-${index}">${
+            item.quantity
+        }</span></p>
                     <p class="font-medium">R$ ${item.price.toFixed(2)}</p>
                 </div>
                 <div class="flex items-center gap-5">
@@ -158,9 +160,7 @@ function updateCartModal() {
 
 function editItem(index) {
     const item = cart[index];
-    document.getElementById(
-        "modalItemName"
-    ).textContent = `Lanche: ${item.name}`;
+    document.getElementById("modalItemName").textContent = ` ${item.name}`;
     document.getElementById("modalItemQuantity").value = item.quantity;
 
     let modal = document.getElementById("editModal");
