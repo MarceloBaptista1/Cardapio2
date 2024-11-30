@@ -8,6 +8,7 @@ const closeModalBtn = document.getElementById("close-modal-btn");
 const cartCounter = document.getElementById("cart-count");
 const addressInput = document.getElementById("address");
 const addressWarn = document.getElementById("address-warn");
+const modalItemQuantity = document.getElementById("modalItemQuantity");
 
 let cart = [];
 
@@ -157,8 +158,10 @@ function updateCartModal() {
 
 function editItem(index) {
     const item = cart[index];
-    console.log(item)
-    document.getElementById("modalItemName").textContent = `Lanche: ${item.name}`;
+
+    document.getElementById(
+        "modalItemName"
+    ).textContent = `Lanche: ${item.name}`;
     document.getElementById("modalItemQuantity").value = item.quantity;
 
     let modal = document.getElementById("editModal");
