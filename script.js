@@ -158,7 +158,7 @@ function updateCartModal() {
 
 function editItem(index) {
     const item = cart[index];
-
+// so pra ver se funciona
     document.getElementById(
         "modalItemName"
     ).textContent = `Lanche: ${item.name}`;
