@@ -157,7 +157,7 @@ function updateCartModal() {
 function editItem(index) {
     const item = cart[index];
 
-    document.getElementsById(
+    document.getElementById(
         "modalItemName"
     ).textContent = `Lanche: ${item.name}`;
     document.getElementById("modalQuantity").value = item.quantity;
