@@ -32,10 +32,11 @@ menu.addEventListener("click", function (event) {
     let parentButton = event.target.closest(".add-to-cart-btn");
 
     if (parentButton) {
-        const name = parentButton.getAttribute("data-name");
+        const name  = parentButton.getAttribute("data-name");
         const price = parseFloat(parentButton.getAttribute("data-price"));
+        const id    = parseInt(parentButton.getAttribute("data-id"))
 
-        addToCart(name, price);
+        addToCart(name, price, id);
     }
 });
 
@@ -59,7 +60,7 @@ function alertaNovoProduto(nome_lanche) {
 }
 
 // Função para ADD no carrinho
-function addToCart(name, price) {
+function addToCart(name, price, id) {
     const existingItem = cart.find((item) => item.name === name);
 
     if (existingItem) {
@@ -69,6 +70,7 @@ function addToCart(name, price) {
             name,
             price,
             quantity: 1,
+            id,
         });
     }
     updateCartModal();
@@ -80,6 +82,7 @@ function updateCartModal() {
     let total = 0;
 
     cart.forEach((item, index) => {
+        console.log(item)
         const cartItemElement = document.createElement("div");
         cartItemElement.classList.add(
             "flex",
@@ -115,11 +118,9 @@ function updateCartModal() {
             <div class="flex items-center justify-between mb-8"> 
                 <div>
                     <p class="font-bold mb-1">${item.name}
-                    <button type="button" class="btn-edit ml-2" onclick="editItem(${index})">Editar</button>      
+                        <button type="button" class="btn-edit ml-2" onclick="editItem(${index})">Editar</button>      
                     </p>
-                    <p>Quantidade: <span id="quantityProductsCartUpdated-${index}">${
-            item.quantity
-        }</span></p>
+                    <p>Quantidade: <span id="quantityProductsCartUpdated-${index}">${item.quantity}</span></p>
                     <p class="font-medium">R$ ${item.price.toFixed(2)}</p>
                 </div>
                 <div class="flex items-center gap-5">
@@ -156,13 +157,11 @@ function updateCartModal() {
 
 function editItem(index) {
     const item = cart[index];
-
-    document.getElementById(
-        "modalItemName"
-    ).textContent = `Lanche: ${item.name}`;
+    console.log(item)
+    document.getElementById("modalItemName").textContent = `Lanche: ${item.name}`;
     document.getElementById("modalItemQuantity").value = item.quantity;
 
-    document.getElementById("editModal");
+    let modal = document.getElementById("editModal");
     modal.classList.remove("hidden");
     modal.classList.add("flex");
 }
