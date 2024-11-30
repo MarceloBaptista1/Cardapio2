@@ -160,7 +160,7 @@ function editItem(index) {
     document.getElementById(
         "modalItemName"
     ).textContent = `Lanche: ${item.name}`;
-    document.getElementById("modalQuantity").value = item.quantity;
+    document.getElementById("modalItemQuantity").value = item.quantity;
 
     document.getElementById("editModal");
     modal.classList.remove("hidden");
