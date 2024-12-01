@@ -1,4 +1,4 @@
-<?php require_once "../header_sistema.php"?>
+<?php require_once $_SERVER['DOCUMENT_ROOT'] . "/Cardapio2/header_sistema.php"?>
     <style>
         span{
             color: white;
@@ -19,7 +19,7 @@
                             <a 
                                 href="javascript:void(0)" 
                                 class="align-middle px-0 d-flex align-items-center" 
-                                onclick="req_assincrona('pedidos/pedidos_listar.php')">
+                                onclick="req_assincrona('pedidos/pedidos_menu.php', 'retorno_req_assincrona')">
                                 <svg width="30" height="30" viewBox="0 0 30 30" fill="none" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
                                 <path d="M0 0H15C23.2843 0 30 6.71573 30 15V15C30 23.2843 23.2843 30 15 30H0V0Z" fill="url(#pattern0_41_32)"/>
                                     <defs>
@@ -38,7 +38,7 @@
                             <a 
                                 href="javascript:void(0)" 
                                 class="align-middle px-0 d-flex align-items-center" 
-                                onclick="req_assincrona('clientes/clientes_listar.php')">
+                                onclick="req_assincrona('clientes/clientes_listar.php', 'retorno_req_assincrona')">
                                 <svg width="30" height="30" viewBox="0 0 30 30" fill="none" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
                                     <rect width="30" height="30" fill="url(#pattern0_40_29)"/>
                                     <defs>
@@ -55,7 +55,7 @@
                             <a 
                                 href="javascript:void(0)" 
                                 class="align-middle px-0 d-flex align-items-center" 
-                                onclick="req_assincrona('pratos/pratos_listar.php')">
+                                onclick="req_assincrona('pratos/pratos_listar.php'), 'retorno_req_assincrona'">
                                 <svg width="30" height="30" viewBox="0 0 30 30" fill="none" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
                                     <rect width="30" height="30" fill="url(#pattern0_87_3)"/>
                                     <defs>
@@ -72,7 +72,7 @@
                             <a 
                                 href="javascript:void(0)" 
                                 class="align-middle px-0 d-flex align-items-center" 
-                                onclick="req_assincrona('financeiro/financeiro_menu.php')">
+                                onclick="req_assincrona('financeiro/financeiro_menu.php'), 'retorno_req_assincrona'">
                                 <svg width="30" height="30" viewBox="0 0 30 30" fill="none" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
                                     <rect width="30" height="30" fill="url(#pattern0_41_30)"/>
                                     <defs>
@@ -89,7 +89,7 @@
                             <a 
                                 href="javascript:void(0)" 
                                 class="align-middle px-0 d-flex align-items-center" 
-                                onclick="req_assincrona('produtos/produtos_listar.php')">
+                                onclick="req_assincrona('produtos/produtos_listar.php', 'retorno_req_assincrona')">
                             <svg width="30" height="32" viewBox="0 0 30 32" fill="none" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
                                 <rect width="30" height="32" fill="url(#pattern0_82_2)"/>
                                 <defs>
@@ -106,7 +106,7 @@
                             <a  
                                 href="javascript:void(0)" 
                                 class="align-middle px-0 d-flex align-items-center" 
-                                onclick="req_assincrona('relatorios/relatorios_menu.php')">
+                                onclick="req_assincrona('relatorios/relatorios_menu.php', 'retorno_req_assincrona')">
                                 <svg width="30" height="32" viewBox="0 0 30 32" fill="none" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
                                     <rect width="30" height="32" fill="url(#pattern0_41_35)"/>
                                     <defs>
@@ -145,4 +145,4 @@
         </div>
     </div>
 
-<?php require_once "../footer_sistema.php" ?>
+<?php require_once $_SERVER['DOCUMENT_ROOT'] . "/Cardapio2/footer_sistema.php"?>

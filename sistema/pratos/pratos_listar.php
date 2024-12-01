@@ -1,5 +1,5 @@
-<?php require_once $_SERVER['DOCUMENT_ROOT'] . "/garagem-itech/header_sistema.php"?>
+<?php require_once $_SERVER['DOCUMENT_ROOT'] . "/Cardapio2/header_sistema.php"?>
     <div>
-        <h1>bateu nos pratos</h1>
+        pratos listar
     </div>
-<?php require_once $_SERVER['DOCUMENT_ROOT'] . "/garagem-itech/footer_sistema.php" ?>
+<?php require_once $_SERVER['DOCUMENT_ROOT'] . "/Cardapio2/footer_sistema.php" ?>
