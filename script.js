@@ -104,7 +104,7 @@ function updateCartModal() {
                     margin-left: 10px;
                 width: 60px;
                     padding: 5px;
-                    border: 1px solid #ccc;
+                    border: 1px solid #ddd;
                     border-radius: 4px;
                 }
                 .btn-edit {
