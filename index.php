@@ -1,4 +1,4 @@
-<?php require_once "consulta_site/pedidos_sql.php"?>
+<?php require_once $_SERVER['DOCUMENT_ROOT'] . "/Cardapio2/consulta_site/lanches_sql.php"?>
 
 <!DOCTYPE html>
 <html lang="pt-BR">
@@ -63,41 +63,44 @@
 			<main
 				class="grid grid-cols-1 md:grid-cols-2 gap-7 md:gap-10 mx-auto max-w-7xl px-2 mb-16"
 			>
+			<?php foreach($array_lanches as $cha => $val){?>
+				<pre><?=var_dump($array_lanches)?></pre>
 				<!--PRODUTO ITEM-->
-				<div id="lanche1" class="flex gap-2">
-					<img
-						src="./assets/hamb-1.png"
-						alt="Smash Burguer"
-						class="w-28 h-28 rounded-md hover:scale-110 hover:rotate-2 duration-300"
-						style="cursor: pointer"
-						onclick="alerta();"
-					/>
+					<div id="lanche1" class="flex gap-2">
+						<img
+							src="./assets/hamb-1.png"
+							alt="Smash Burguer"
+							class="w-28 h-28 rounded-md hover:scale-110 hover:rotate-2 duration-300"
+							style="cursor: pointer"
+							onclick="alerta();"
+						/>
 
-					<div>
-						<p class="font-bold">Smash Burguer</p>
-						<p class="text-sm">
-							Um smash burguer da casa 70g, cheddar americano e
-							pão brioche.
-						</p>
+						<div>
+							<p class="font-bold">Smash Burguer</p>
+							<p class="text-sm">
+								Um smash burguer da casa 70g, cheddar americano e
+								pão brioche.
+							</p>
 
-						<div
-							class="flex items-center gap-2 justify-between mt-3"
-						>
-							<p class="font-bold">R$ 20.99</p>
-							<button
-								class="bg-gray-900 px-5 rounded add-to-cart-btn"
-								data-name="Smash Burger"
-								data-price="20.99"
-								data-id="2"
-								onclick="alertaNovoProduto('Smash Cheader Burguer');"
+							<div
+								class="flex items-center gap-2 justify-between mt-3"
 							>
-								<i
-									class="fa fa-cart-plus text-lg text-white"
-								></i>
-							</button>
+								<p class="font-bold">R$ 20.99</p>
+								<button
+									class="bg-gray-900 px-5 rounded add-to-cart-btn"
+									data-name="Smash Burger"
+									data-price="20.99"
+									data-id="2"
+									onclick="alertaNovoProduto('Smash Cheader Burguer');"
+								>
+									<i
+										class="fa fa-cart-plus text-lg text-white"
+									></i>
+								</button>
+							</div>
 						</div>
 					</div>
-				</div>
+				<?php }?>
 			</main>
 
 			<!-- FIM PRODUTO ITEM -->
