@@ -11,7 +11,7 @@
             throw new Exception("Falha na conexão: " . mysqli_connect_error());
         }
 
-        mysqli_close($conn);
+        //mysqli_close($conn);
         
     } catch (Exception $e) {
         echo 'Erro :: ' . $e->getMessage(), "\n";
