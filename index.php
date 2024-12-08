@@ -1,4 +1,5 @@
 <?php require_once $_SERVER['DOCUMENT_ROOT'] . "/Cardapio2/consulta_site/lanches_sql.php"?>
+<?php require_once $_SERVER['DOCUMENT_ROOT'] . "/Cardapio2/consulta_site/bebidas_sql.php"?>
 
 <!DOCTYPE html>
 <html lang="pt-BR">
@@ -63,35 +64,33 @@
 			<main
 				class="grid grid-cols-1 md:grid-cols-2 gap-7 md:gap-10 mx-auto max-w-7xl px-2 mb-16"
 			>
-			<?php foreach($array_lanches as $cha => $val){?>
-				<pre><?=var_dump($array_lanches)?></pre>
+			<?php foreach($array_lanches as $cha_lanches => $val_lanches){?>
 				<!--PRODUTO ITEM-->
-					<div id="lanche1" class="flex gap-2">
+					<div class="flex gap-2">
 						<img
-							src="./assets/hamb-1.png"
-							alt="Smash Burguer"
+							src="<?='./'.$val_lanches['foto_lanche'] ?? '' ?>"
+							alt="<?=$val_lanches['nome_lanche']?>"
 							class="w-28 h-28 rounded-md hover:scale-110 hover:rotate-2 duration-300"
 							style="cursor: pointer"
 							onclick="alerta();"
 						/>
 
-						<div>
-							<p class="font-bold">Smash Burguer</p>
+						<div class="w-full">
+							<p class="font-bold"><?=$val_lanches['nome_lanche']?></p>
 							<p class="text-sm">
-								Um smash burguer da casa 70g, cheddar americano e
-								pão brioche.
+								<?=$val_lanches['descricao_lanche']?>
 							</p>
 
 							<div
-								class="flex items-center gap-2 justify-between mt-3"
+								class="flex items-center gap-2 justify-between mt-3""
 							>
-								<p class="font-bold">R$ 20.99</p>
+								<p class="font-bold">R$ <?=$val_lanches['preco_venda_lanche']?></p>
 								<button
 									class="bg-gray-900 px-5 rounded add-to-cart-btn"
 									data-name="Smash Burger"
-									data-price="20.99"
-									data-id="2"
-									onclick="alertaNovoProduto('Smash Cheader Burguer');"
+									data-price="<?=$val_lanches['preco_venda_lanche']?>"
+									data-id="<?=$val_lanches['id_lanche']?>"
+									onclick="alertaNovoProduto('<?=$val_lanches['nome_lanche']?>');"
 								>
 									<i
 										class="fa fa-cart-plus text-lg text-white"
@@ -103,52 +102,47 @@
 				<?php }?>
 			</main>
 
-			<!-- FIM PRODUTO ITEM -->
 
-			<!-- GRID BEBIDA -->
 			<div class="mx-auto max-w-7xl px-2 my-2">
 				<h2 class="font-bold text-3xl">Bebidas</h2>
 			</div>
 
-			<!-- FIM GRID BEBIDAS -->
-
-			<!-- BEBIDA 1 -->
 
 			<div
 				class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-2 gap-7 md:gap-10 mx-auto max-w-7xl px-2 mb-16"
 				id="menu2"
 			>
-				<div class="flex gap-2 w-full">
-					<img
-						src="./assets/refri-1.png"
-						alt="Coca Lata"
-						class="w-28 h-28 rounded-md hover:scale-110 hover:rotate-2 duration-300"
-					/>
+				<?php foreach($array_bebidas as $cha_bebidas => $val_bebidas){?>
+					<div class="flex gap-2 w-full">
+						<img
+							src="<?='./'.$val_bebidas['foto_bebida'] ?? '' ?>"
+							alt="<?=$val_bebidas['nome_bebida']?>"
+							class="w-28 h-28 rounded-md hover:scale-110 hover:rotate-2 duration-300"
+						/>
 
-					<div class="w-full">
-						<p class="font-bold">Coca Lata</p>
+						<div class="w-full">
+							<p class="font-bold"><?=$val_bebidas['nome_bebida']?></p>
 
-						<div
-							class="flex items-center gap-2 justify-between mt-5"
-						>
-							<p class="font-bold">R$ 5.29</p>
-							<button
-								class="bg-gray-900 px-5 rounded add-to-cart-btn"
-								data-name="Coca Lata"
-								data-price="5,29"
-								onclick="alertaNovoProduto('Coca Lata');"
+							<div
+								class="flex items-center gap-2 justify-between mt-5"
 							>
-								<i
-									class="fa fa-cart-plus text-lg text-white"
-								></i>
-							</button>
+								<p class="font-bold">R$<?=$val_bebidas['preco_venda_bebida']?></p>
+								<button
+									class="bg-gray-900 px-5 rounded add-to-cart-btn"
+									data-name="<?=$val_bebidas['nome_bebida']?>"
+									data-price="<?=$val_bebidas['preco_venda_bebida']?>"
+									data-id="<?$val_bebidas['id_bebida']?>"
+									onclick="alertaNovoProduto('<?=$val_bebidas['nome_bebida']?>');"
+								>
+									<i
+										class="fa fa-cart-plus text-lg text-white"
+									></i>
+								</button>
+							</div>
 						</div>
 					</div>
-				</div>
+				<?php }?>
 
-				<!-- FIM BEBIDA 1 -->
-
-				<!-- MODAL CART -->
 			</div>
 		</div>
 		<div

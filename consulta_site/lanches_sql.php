@@ -4,8 +4,11 @@
         $array_lanches = array();
 
         $sql_lanche = "    SELECT 
-                                     l.nome_lanche
+                                     l.id_lanche
+                                    ,l.nome_lanche
                                     ,l.descricao_lanche
+                                    ,l.preco_venda_lanche
+                                    ,l.foto_lanche
                                     ,GROUP_CONCAT(p.id_produto ORDER BY p.id_produto SEPARATOR ', ') AS id_ingredientes
                                 FROM 
                                     LANCHES l
@@ -42,11 +45,16 @@
 
             $array_ingredientes = array();
             while($sql_ingredientes_a = mysqli_fetch_assoc($sql_ingredientes_q)){
-                $array_lanches['lanche']['ingredientes'] = $sql_ingredientes_a;
+                $array_ingredientes[] = $sql_ingredientes_a;
             }
 
             $array_lanches[] =  [
-                                    'nome_lanche' => $arr_dados['nome_lanche']
+                                     'id_lanche'            => $arr_dados['id_lanche']
+                                    ,'nome_lanche'          => $arr_dados['nome_lanche']
+                                    ,'descricao_lanche'     => $arr_dados['descricao_lanche']
+                                    ,'preco_venda_lanche'   => $arr_dados['preco_venda_lanche']
+                                    ,'foto_lanche'          => $arr_dados['foto_lanche']
+                                    ,'ingredientes'         => $array_ingredientes
                                 ];
 
         }
