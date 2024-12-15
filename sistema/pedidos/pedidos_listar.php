@@ -1,5 +1,6 @@
 <?php require_once $_SERVER['DOCUMENT_ROOT'] . "/Cardapio2/header_sistema.php"?>
-    <form>        
+<?php require_once $_SERVER['DOCUMENT_ROOT'] . "/Cardapio2/sistema/pedidos/pedidos_listar_sql.php"?>
+    <form method="POST">
         <div class="row d-flex">
             <div class="mb-3 col-12 col-md-4 col-lg-1">
                 <label for="id_cliente" class="form-label">Id</label>
@@ -7,7 +8,13 @@
             </div>
             <div class="mb-3 col-12 col-md-6 col-lg-4">
                 <label for="nome_cliente" class="form-label">Nome Cliente</label>
-                <input type="text" class="form-control" id="nome_cliente">
+                <select class="form-select" id="nome_cliente">
+                    <option value="0">Selecione</option>
+            <?php foreach($array_clientes as $cha_clientes => $val_clientes){?>
+                    <option value="<?=$val_clientes['id_cliente']?>"><?=$val_clientes['nome_cliente']?></option>
+            <?php }?>
+                </select>
+                <!-- <input type="text" class="form-control" id="nome_cliente"> -->
             </div>
             <div class="mb-3 col-12 col-md-6 col-lg-4">
                 <label for="status_pedido" class="form-label">Status</label>
