@@ -10,7 +10,7 @@ function req_assincrona(url, div_retorno, form = null) {
     $.ajax({
         url: url,
         method: 'POST',
-        data: formData, 
+        data: formData,
         success: function(data) {
             $("#" + div_retorno).html(data); 
         },
