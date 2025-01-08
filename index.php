@@ -13,7 +13,32 @@
 		<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" integrity="sha512-Fo3rlrZj/k7ujTnHg4CGR2D7kSs0v4LLanw2qksYuRlEzO+tcaEPQogQ0KaoGN26/zrn20ImR1DfuLWnOo7aBA==" crossorigin="anonymous" referrerpolicy="no-referrer"/>
 		<link rel="stylesheet" href="./styles/output.css" />
 		<title>Burger Bom</title>
+
+		<style>
+			input[type=number]::-webkit-inner-spin-button { 
+				-webkit-appearance: none;
+			}
+			input[type=number] { 
+				-moz-appearance: textfield;
+				appearance: textfield;
+				margin-right: 10px;
+				margin-left: 10px;
+				width: 60px;
+				padding: 5px;
+				border: 1px solid #ddd;
+				border-radius: 4px;
+			}
+			.btn-edit {
+				font-size: 10px;
+				padding: 2px 6px;
+				background-color: transparent; 
+				color: green; 
+				cursor: pointer; 
+				transition: all 0.3s ease;
+			}
+		</style>
 	</head>
+
 	<body>
 		<header class="w-full h-[420px] bg-zinc-900 bg-home bg-cover bg-center">
 			<div class="w-full h-full flex flex-col justify-center items-center">
@@ -37,7 +62,7 @@
 			Conheça Nossos Burguers
 		</h2>
 
-		<div id="menu">
+		<div id="menu" onclick="assembleCart()">
 			<main class="grid grid-cols-1 md:grid-cols-2 gap-7 md:gap-10 mx-auto max-w-7xl px-2 mb-16">
 			<?php foreach($array_lanches as $cha_lanches => $val_lanches){?>
 					<div class="flex gap-2">
@@ -61,10 +86,10 @@
 								<p class="font-bold">R$ <?=$val_lanches['preco_venda_lanche']?></p>
 								<button
 									class="bg-gray-900 px-5 rounded add-to-cart-btn"
-									data-name="Smash Burger"
+									data-name="<?=$val_lanches['nome_lanche']?>"
 									data-price="<?=$val_lanches['preco_venda_lanche']?>"
 									data-id="<?=$val_lanches['id_lanche']?>"
-									onclick="alertaNovoProduto('<?=$val_lanches['nome_lanche']?>');"
+									onclick="alertNewProduct('<?=$val_lanches['nome_lanche']?>');"
 								>
 									<i
 										class="fa fa-cart-plus text-lg text-white"
@@ -94,7 +119,7 @@
 									data-name="<?=$val_bebidas['nome_bebida']?>"
 									data-price="<?=$val_bebidas['preco_venda_bebida']?>"
 									data-id="<?$val_bebidas['id_bebida']?>"
-									onclick="alertaNovoProduto('<?=$val_bebidas['nome_bebida']?>');"
+									onclick="alertNewProduct('<?=$val_bebidas['nome_bebida']?>');"
 								>
 									<i class="fa fa-cart-plus text-lg text-white"></i>
 								</button>
@@ -135,10 +160,11 @@
 					Digite Seu Endereço!!
 				</p>
 				<div class="flex items-center justify-between mt-5 w-full">
-					<button id="close-modal-btn">Fechar</button>
+					<button id="close-modal-btn" onclick="closeCartModal()">Fechar</button>
 					<button
 						id="checkout-btn"
 						class="bg-green-600 text-white px-4 py-1 rounded"
+						onclick="finishOrder()"
 					>
 						Concluir Pedido
 					</button>
@@ -166,7 +192,7 @@
 		</div>
 
 		<footer class="w-full bg-red-500 py-2 fixed bottom-0 z-40 flex items-center justify-center">
-			<button class="flex items-center gap-2 text-white font-bold" id="cart-btn">
+			<button class="flex items-center gap-2 text-white font-bold" id="cart-btn" onclick="openCartModal()">
 				(<span id="cart-count"> 0 </span>) Veja Meu Carrinho
 				<i class="fa fa-cart-plus text-lg text-white"></i>
 			</button>
